@@ -4,8 +4,8 @@ Commands
 --------
 ```
 $ dokku help
-     console <app>           tail -f the live app console
-     console::logs <app>     console logs
+     console <app>          tail -f the live app console
+     console:logs <app>     console logs
 ```
 
 Installation

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+function container_for ( ) {
+  APP="$1" 
+  REPO="$DOKKU_ROOT/$APP"
+  cat $REPO/CONTAINER
+}
+
+case "$1" in
+  console)
+    container=$(container_for $2)
+    echo "console for $container ($2)"
+    exec docker attach --no-stdin=true --sig-proxy=false $container
+    ;;
+
+  help)
+    cat && cat<<EOF
+    console <app>                                   tail -f the live app console
+EOF
+  ;;
+
+esac

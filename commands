@@ -14,9 +14,16 @@ case "$1" in
     exec docker attach --no-stdin=true --sig-proxy=false $container
     ;;
 
+  console::logs)
+    container=$(container_for $2)
+    echo "logs for $container ($2)"
+    exec docker logs $container
+    ;;
+
   help)
     cat && cat<<EOF
     console <app>                                   tail -f the live app console
+    console::logs <app>                             console logs
 EOF
   ;;
 

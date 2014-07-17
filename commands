@@ -14,7 +14,7 @@ case "$1" in
     exec docker attach --no-stdin=true --sig-proxy=false $container
     ;;
 
-  console::logs)
+  console:logs)
     container=$(container_for $2)
     echo "logs for $container ($2)"
     exec docker logs $container
